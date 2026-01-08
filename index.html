@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo / Welcome / Bienvenido / Bienvenue</title>
+    <style>
+        :root {
+            --primary-orange: #ff6600;
+            --light-orange: #fff0e6;
+            --bg-color: #f9f9f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .lang-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: white;
+            border: 2px solid var(--light-orange);
+            border-radius: 50px;
+            color: #333;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .flag { margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Select your language</h1>
+        
+        <a href="pt.html" class="lang-btn">
+            <span class="flag">🇧🇷</span> Português
+        </a>
+        
+        <a href="en.html" class="lang-btn">
+            <span class="flag">🇺🇸</span> English
+        </a>
+        
+        <a href="es.html" class="lang-btn">
+            <span class="flag">🇪🇸</span> Español
+        </a>
+        
+        <a href="fr.html" class="lang-btn">
+            <span class="flag">🇫🇷</span> Français
+        </a>
+    </div>
+
+</body>
+</html>
