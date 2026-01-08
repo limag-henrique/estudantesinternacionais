@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Sobrevivência - Belo Horizonte</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary-orange: #ff6600;
+            --light-orange: #fff0e6;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius-lg: 30px;
+            --border-radius-sm: 15px;
+            --nav-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--nav-height) + 20px);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #cc5200;
+            text-decoration: underline;
+        }
+
+        /* --- PROGRESS BAR --- */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: var(--primary-orange);
+            width: 0%;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            border-bottom-left-radius: var(--border-radius-lg);
+            border-bottom-right-radius: var(--border-radius-lg);
+        }
+
+        nav {
+            width: 90%;
+            max-width: 1200px;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            gap: 20px;
+            padding: 0 10px;
+            /* Hide scrollbar */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        nav a {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--light-orange);
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            width: 90%;
+            max-width: 900px;
+            margin: calc(var(--nav-height) + 40px) auto 40px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-orange);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-orange);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* --- SPECIFIC COMPONENT STYLES --- */
+        
+        /* Contact Cards for Housing */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background-color: var(--light-orange);
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid #ffe0cc;
+        }
+
+        .contact-card h4 {
+            color: var(--primary-orange);
+            margin-bottom: 10px;
+        }
+
+        .contact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .contact-card li {
+            margin-bottom: 5px;
+        }
+
+        /* Documentation List */
+        .doc-list li {
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+        }
+
+        /* Checklist style */
+        .checklist li::marker {
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            section { padding: 25px; }
+            header { justify-content: flex-start; } /* Allow scrolling on mobile nav */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="#intro">Início</a>
+            <a href="#documentacao">Documentação</a>
+            <a href="#moradia">Moradia</a>
+            <a href="#comunicacao">Comunicação</a>
+            <a href="#bancos">Bancos</a>
+            <a href="#transporte">Transporte</a>
+            <a href="#seguranca">Segurança</a>
+            <a href="#saude">Saúde</a>
+            <a href="#universidade">Universidade</a>
+            <a href="#lazer">Lazer</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h1>Como sobreviver em Belo Horizonte</h1>
+            <p>Oi! Parabéns por ter passado por todas as burocracias para chegar até aqui! Ficamos muito felizes em te receber no nosso campus. Meu nome é Henrique e sou seu padrinho (ou seja: vou te orientar e te ajudar a dar os primeiros passos para você realmente gostar daqui).</p>
+            <p>Separei algumas coisas importantes para te passar; tente salvar isso no seu celular para consultar quando precisar.</p>
+            <p>Abordei tudo de forma simples. Se quiser saber mais sobre algum tópico específico, é só me chamar.</p>
+            <p>Todas as dicas são baseadas em experiências práticas do dia a dia de um nativo.</p>
+        </section>
+
+        <section id="documentacao">
+            <h2>Documentação</h2>
+            <p>Você já recebeu (ou receberá) uma lista gigante de documentos e um passo a passo para tirá‑los. Nosso país é famoso pela burocracia, e vamos te ajudar nessa bagunça. O mais importante agora é o CPF. Guarde bem esse nome — você vai ouvi‑lo em mercados, apps, farmácias, na faculdade e até no médico. CPF = Cadastro de Pessoas Físicas: é um número individual usado para identificar uma pessoa nos sistemas.</p>
+            <p>Diferente do Social Security dos EUA, o CPF por aqui é muito usado para padronizar cadastros em empresas, hospitais e universidades. Você pode solicitar o CPF:</p>
+            <ul>
+                <li>Antes de vir ao Brasil: no consulado brasileiro do seu país (recomendado para agilizar). Veja: <a href="https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior" target="_blank">https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior</a>. Dica: envie os documentos por e‑mail; geralmente respondem em até 1–2 semanas.</li>
+                <li>Após chegar: em postos da Receita Federal em Belo Horizonte.</li>
+            </ul>
+            <p>Além do CPF, você precisa do Registro Nacional Migratório (CRNM). Você tem entre 30 dias para registrar sua situação migratória junto à Polícia Federal. Para fazer sua matrícula na UFMG você deve apresentar esse documento.</p>
+            <p>O CRNM funciona como uma ID local: não é preciso andar com o passaporte o tempo todo (leve só um cópia impressa para emergências) — carregue o CRNM.</p>
+            
+            <h3>Passo a passo para tirar a CRNM</h3>
+            <p>No dia agendado, leve:</p>
+            <ol class="doc-list">
+                <li>Formulário preenchido <a href="https://servicos.dpf.gov.br/sismigra-internet/faces/publico/tipoSolicitacao/permanenciaRegistroEmissaoCie.seam?cid=12052" target="_blank">Link do formulário</a></li>
+                <li>Duas fotos 3×4, recentes, coloridas e com fundo branco.</li>
+                <li>Declaração de endereço eletrônico e demais meios de contato <a href="https://www.gov.br/pf/pt-br/assuntos/imigracao/declaracoes-e-formularios/declaracao-eletronica-e-demais-meios-de-contato.pdf" target="_blank">Link da declaração</a></li>
+                <li>Cópia de comprovante de residência (conta de luz, gás, internet etc.) em seu nome, se tiver.</li>
+                <li>Documento de identificação oficial (passaporte, documento do país de origem com foto ou documento emitido por órgão público brasileiro). Esse documento pode estar vencido.</li>
+                <li>Formulário original do visto (Visa Application Form).</li>
+                <li>Carta de aceite da instituição de ensino brasileira.</li>
+                <li>Comprovante de pagamento da taxa de emissão da CRNM (GRU). Código de receita: 140120. Valor de referência: R$ 204,77 (verifique no momento da emissão).</li>
+            </ol>
+            <p>Após ter esses documentos, não há necessidade de andar com o passaporte — leve apenas uma cópia e ande sempre com o seu CRNM.</p>
+        </section>
+
+        <section id="moradia">
+            <h2>Moradia</h2>
+            <p>A UFMG oferece moradias universitárias para um número pequeno de intercambistas. Por ser uma universidade pública, a moradia não exige aluguel, porém é extremamente difícil de conseguir.</p>
+            <p>Outras opções mais plausíveis:</p>
+            <ul>
+                <li>Alugar um quarto em uma república de estudantes ou casa — recomendo.</li>
+                <li><a href="https://hyhaus.com.br" target="_blank">https://hyhaus.com.br</a> — R$ 1.890/mês</li>
+                <li>Buscar ofertas de quartos neste portal: <a href="https://republicasfederais.jimdofree.com/ufmg/" target="_blank">https://republicasfederais.jimdofree.com/ufmg/</a></li>
+                <li>República GARGANO — (31) 99278-9145</li>
+                <li>Coliving — <a href="https://www.instagram.com/colivingbh/" target="_blank">https://www.instagram.com/colivingbh/</a></li>
+            </ul>
+
+            <h3>ACOMODAÇÕES (FEMININAS E/OU MASCULINAS)</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Danielle Xavier</h4>
+                    <ul>
+                        <li>Endereço: Rua Artur Itabirano, São José</li>
+                        <li>Telefone: +55 (31) 98408-4200 / +55 (31) 2520-2530</li>
+                        <li>Email: daniellexavier.studio@hotmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Eulina Magalhães</h4>
+                    <ul>
+                        <li>Endereço: Rua Sebastião Antônio Carlos, Bairro Bandeirantes</li>
+                        <li>Telefone: +55 (31) 98204-4776</li>
+                        <li>Email: linamaga.caetano@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Isabel Meirelles</h4>
+                    <ul>
+                        <li>Endereço: Rua Coronel Marcelino, Santa Rosa</li>
+                        <li>Telefone: +55 (31) 98405-1589</li>
+                        <li>Email: belmeirelles@yahoo.com.br</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Júnia Viana</h4>
+                    <ul>
+                        <li>Endereço: Rua Ceará, Funcionários</li>
+                        <li>Telefone: +55 (31) 99797-9727</li>
+                        <li>Email: junia.cvjviana@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Maria Teresa Gomes</h4>
+                    <ul>
+                        <li>Endereço: Alameda das Falcatas, Bairro São Luiz</li>
+                        <li>Telefone: +55 (31) 99282-7999</li>
+                        <li>Email: mteresa.sol@hotmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Nilce Soares / Sebastião Soares</h4>
+                    <ul>
+                        <li>Endereço: Rua Francisco Proença, Bairro Jaraguá</li>
+                        <li>Telefone: +55 (31) 98645-1096</li>
+                        <li>Emails: nilcemss@yahoo.com.br / soaressebastiao@yahoo.com.br</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Lourdes Consolazio</h4>
+                    <ul>
+                        <li>Endereço: Alameda das Falcatas, São Luiz</li>
+                        <li>Telefone: +55 (31) 3441-0450</li>
+                        <li>Email: lourdesconsolazio@yahoo.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>ACOMODAÇÕES SOMENTE MASCULINAS</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Silvio Leonardo</h4>
+                    <ul>
+                        <li>Endereço: Rua Batista Santiago, Liberdade</li>
+                        <li>Telefone: +55 (31) 99373-1201</li>
+                        <li>Email: silviodcc@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Freddy Mpanano</h4>
+                    <ul>
+                        <li>Endereço: Rua Mascarenhas, São Luiz</li>
+                        <li>Telefone: +55 (31) 98645-3003</li>
+                        <li>Email: fmpanano2@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>ACOMODAÇÕES SOMENTE FEMININAS</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Vanessa Tamietti</h4>
+                    <ul>
+                        <li>Endereço: Rua Abre Campo, Santo Antônio</li>
+                        <li>Telefone: +55 (31) 99737-4111</li>
+                        <li>Email: v.tamietti@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Renata Álvares</h4>
+                    <ul>
+                        <li>Endereço: Avenida Pinheiros, Aparecida</li>
+                        <li>Telefone: +55 (31) 99856-4663</li>
+                        <li>Email: alvares.renata1989@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Outras opções rápidas:</h3>
+            <ul>
+                <li>Reservar um hostel ou Airbnb através do Booking ou HostelWorld — dica: pesquise pelo telefone da hospedagem e tente negociar desconto diretamente.</li>
+                <li>Alugar um apartamento já mobiliado no site QuintoAndar.</li>
+                <li>Procure estar próximo à UFMG (Bairro Pampulha para a maioria dos cursos; atenção: áreas da Saúde e Direito ficam no Centro) ou perto de linhas de BRT/ônibus que levam à universidade.</li>
+            </ul>
+        </section>
+
+        <section id="comunicacao">
+            <h2>Comunicação</h2>
+            <p>A maioria das pessoas em BH fala apenas português. Se travar no idioma, peça para falar mais devagar, repita devagar, use gestos, as pessoas costumam ajudar.</p>
+            <p>E não se preocupe! Não somos franceses, e não temos vergonha ou raiva nenhuma de não falar português, quando isso acontece é quando a pessoa não domina nada do idioma, mas na grande maioria dos casos, as pessoas serão muito solícitas em te ajudar da melhor maneira possível</p>
+            
+            <h3>SIM card</h3>
+            <p>Assim que tiver seu CPF, vá a um quiosque, farmácia Araujo ou loja de celular e compre um chip (SIM card). As operadoras dominantes são três; eu recomendo a Claro por custo/velocidade. Com R$ 35,00 mensais você já fica conectado com chamadas nacionais ilimitadas.</p>
+            <p>Se o celular não tiver slot para SIM, me chama que resolvemos.</p>
+            <p>Baixe o WhatsApp (se ainda não tem) — é o principal canal de comunicação, junto com o Instagram. No Instagram, siga: DRI UFMG, UFMG, Escola do seu curso, spotted_ufmg (fofocas e avisos).</p>
+        </section>
+
+        <section id="bancos">
+            <h2>Bancos</h2>
+            <p>Com CPF e celular é hora de abrir conta.</p>
+            <ul>
+                <li><strong>PIX:</strong> sistema de pagamentos instantâneos usado por todo mundo (sem taxas para pessoas físicas) — é como um Venmo/PAYPAL do governo.</li>
+                <li><strong>Banco Inter:</strong> um dos bancos mais usados; permite receber transferências nacionais e internacionais SWIFT/ACH sem taxa e fazer câmbio fácil.</li>
+                <li><strong>Revolut, Wise, Nubank:</strong> opções viáveis com abertura online.</li>
+                <li><strong>Banco do Brasil:</strong> se você receber dinheiro da UFMG, pode ser necessário abrir conta lá; há contas universitárias com benefícios, e estrangeiros conseguem cartão de crédito mais facilmente.</li>
+            </ul>
+            <p>Todas as opções acima têm contas sem custos básicos, mas cuidado com o crédito, pode gerar dívida rápido.</p>
+            <p>Dinheiro físico? Quase ninguém usa, mas vale ter um pouco para emergência.</p>
+            <p>Aqui a cultura de gorjeta não é tão padrão: os 10% já costumam vir na conta. Se não quiser o serviço, peça para retirar os 10%.</p>
+            <p>Ao pagar com cartão, vão perguntar se quer pagar no débito ou crédito. Se tiver saldo, prefira débito; se for aprovado para a função crédito, pague a fatura em dia.</p>
+            <p>Com o PIX você faz pagamentos instantâneos por QR Code ou link — ótimo para dividir contas com amigos.</p>
+        </section>
+
+        <section id="transporte">
+            <h2>Transporte</h2>
+            <ul>
+                <li>O Google Maps funciona muito bem para rotas de ônibus em BH.</li>
+                <li><strong>Ônibus municipais (azuis):</strong> custa R$ 6,25. Pode pagar em dinheiro ou com cartão BHBus (cartão recarregável nas estações e no app BHBus+).</li>
+                <li><strong>BRT (ônibus verdes):</strong> também da prefeitura; usam plataformas no meio da avenida, são mais rápidos e têm o mesmo preço. Há ônibus diretos e paradores (marcados com P) estes últimos param em todas as estações.</li>
+                <li><strong>Ônibus intermunicipais (vermelhos, laranjas, roxos):</strong> aceitam só dinheiro ou cartão Ótimo, útil se vai para outras cidades.</li>
+                <li><strong>Metrô:</strong> nosso “metrô” funciona como trem. Pagamento com cartão (crédito/débito), BHBus ou Ótimo. Tem basicamente uma linha (sentidos Novo Eldorado — Contagem; Vilarinho — Venda Nova).</li>
+                <li><strong>Bicicletas elétricas:</strong> por cerca de R$ 35,00/mês você tem direito a 4 viagens de 30 minutos cada (app TemBici) por dia — pagamento em cartão de crédito. Interessante se anda muito pelo Centro ou pela Lagoa da Pampulha.</li>
+                <li><strong>Apps de transporte:</strong> use Uber e 99. Ative a autenticação por código na corrida para segurança. Prefira pagar por cartão ou PIX, evite dinheiro.</li>
+                <li><strong>Delivery:</strong> apps mais usados são iFood e 99Food.</li>
+            </ul>
+        </section>
+
+        <section id="seguranca">
+            <h2>Segurança</h2>
+            <p>Você escolheu bem: BH é relativamente tranquila e é um polo universitário, gastronômico e cultural. Ainda assim, por ser uma região grande, problemas urbanos acontecem.</p>
+            <ul>
+                <li>Crime mais comum: batedores de carteira. Assaltos mais violentos são menos frequentes, mas existem.</li>
+                <li>Dica prática: ande acompanhado, durante o dia em locais movimentados; guarde celular e documentos em pochetes, bolsos internos ou mochilas bem fechadas.</li>
+                <li>Ao usar o celular na rua, entre em alguma loja se precisar checar algo</li>
+            </ul>
+            <p>Bairros mais seguros: Zona Sul (Savassi, Lourdes, Mangabeiras), Buritis, Pampulha, UFMG e Belvedere. Bairros para redobrar atenção: Centro, Cachoeirinha e Venda Nova.</p>
+            <p>Parques, museus, shoppings e lojas em geral costumam ser seguros — o importante é não dar oportunidade.</p>
+        </section>
+
+        <section id="saude">
+            <h2>Saúde</h2>
+            <p>Tomei gripe? Dengue? Febre amarela? Quer camisinhas? Boa notícia: o Brasil tem saúde pública gratuita para quem está no país, e você tem acesso a ela.</p>
+            <p>O SUS (Sistema Único de Saúde) funciona em dois níveis básicos:</p>
+            <p><strong>UBS (Unidade Básica de Saúde / Posto de Saúde):</strong> para consultas gerais, gripe, vacinas, camisinhas, etc. Leve CRNM, CPF e comprovante de residência. Cada endereço tem uma UBS de referência — me passe sua rua que eu verifico a mais próxima e os horários.</p>
+            <p><strong>UPA (Unidade de Pronto Atendimento):</strong> quando a coisa está realmente grave. Em Minas a gente costuma dizer “o trem tá feio” — é só uma gíria local; acostume‑se. A UBS pode encaminhar para a UPA, ou você pode ir por conta própria se achar necessário.</p>
+            <p>Além do SUS, você provavelmente tem um seguro saúde privado com cobertura nacional. Verifique carência e cobertura, e saiba as unidades conveniadas mais próximas de você.</p>
+            <p>Dica: aproveite que vacinas são oferecidas publicamente — tome as que achar necessárias.</p>
+        </section>
+
+        <section id="universidade">
+            <h2>Universidade</h2>
+            <p>Para se envolver mais na faculdade e tirar dúvidas, entre nos grupos não oficiais da UFMG no WhatsApp: <a href="https://wa.me/5531991579687?text=Oi%20Lucas,%20qual%20o%20Link%20dos%20grupos?" target="_blank">Link WhatsApp</a></p>
+            <ul>
+                <li>Frequência mínima: 75%. Notas finais devem ser maiores que 60 para aprovação. Portanto, assista às aulas e assine as listas de presença.</li>
+                <li>Almoce nos restaurantes universitários por menos de R$ 6,00 — pague com cartão de débito ou dinheiro.</li>
+            </ul>
+            <p>Mais informações no guia oficial da UFMG (português e inglês): <a href="https://www.ufmg.br/dri/guia-do-estudante-internacional/" target="_blank">https://www.ufmg.br/dri/guia-do-estudante-internacional/</a></p>
+        </section>
+
+        <section id="lazer">
+            <h2>Lazer</h2>
+            <p>Para aproveitar BH ao máximo:</p>
+            
+            <h3>Comidinhas típicas e lugares para experimentar</h3>
+            <ul class="checklist">
+                <li>Xapuri ($$$)</li>
+                <li>Restaurantes do Edifício Maleta ($$)</li>
+                <li>Petiscos do Mercado Central ($)</li>
+            </ul>
+
+            <h3>Checklist do que provar:</h3>
+            <ul class="checklist">
+                <li>Pão de queijo feito com queijo de verdade</li>
+                <li>Caldo de cana</li>
+                <li>Pastel paulista</li>
+                <li>Hotdog brabo</li>
+                <li>Sanduíche de trailer podrão</li>
+                <li>Fígado com jiló</li>
+                <li>Caipirinha</li>
+                <li>Limonada do Mercado Central</li>
+                <li>Drinks do Mercado novo e mascate (drinking age > 18)</li>
+                <li>Suco de maracujá, graviola e acerola</li>
+                <li>Açaí DO PARÁ com granola e banana</li>
+            </ul>
+
+            <h3>Vida noturna (vá com outras pessoas)</h3>
+            <ul>
+                <li>Baladas e casas noturnas na Savassi (entrada > 18 anos)</li>
+                <li>Bares e casas na Rua Sapucaí</li>
+            </ul>
+
+            <h3>Vida diurna (região central e Savassi — muitos lugares gratuitos)</h3>
+            <ul>
+                <li>Parque Municipal</li>
+                <li>Museu/Palácio das Artes</li>
+                <li>Praça da Liberdade e seus museus (CCBB, Casa Fiat, Centro Cultural Unimed, Museu Mineiro, Palácio da Liberdade, Museu de Minas e de Metais, Centro de Arte Popular, Museu de Artes e Ofícios)</li>
+                <li>Cinemas culturais (Cine Humberto Mauro, Cine Una — Belas Artes)</li>
+                <li>Planetário (Espaço Cultural da UFMG)</li>
+                <li>Visitar a arquitetura das igrejas católicas</li>
+                <li>Ir a um show de rock</li>
+            </ul>
+
+            <h3>Fora da região central</h3>
+            <ul>
+                <li>Parque das Mangabeiras — grande parque urbano com trilhas</li>
+                <li>Parque da Serra do Curral</li>
+                <li>Andar de bicicleta na Lagoa da Pampulha</li>
+                <li>Parque Guanabara (brinquedos)</li>
+                <li>Museu Inhotim (planejamos ir com a DRI)</li>
+                <li>Visita a Ouro Preto (planejamos ir com a DRI)</li>
+                <li>Gruta da Lapinha, em Lagoa Santa</li>
+                <li>Clube da UFMG</li>
+                <li>Bibliotecas públicas (Praça da Liberdade e UFMG)</li>
+                <li>Teatros no CCBB, Palácio das Artes e Sesc Palladium</li>
+                <li>Compras no Oiapoque e nos shoppings</li>
+            </ul>
+        </section>
+            <div class="footer">Meu instagram é limag_henrique e meu whatsapp é o 31 99421-7926, qualquer dúvida, estou à disposição!</div>
+    </main>
+
+    <script>
+        // Progress Bar Script
+        window.onscroll = function() {myFunction()};
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            
+            // Optional: Highlight active section in Nav
+            highlightNav();
+        }
+
+        // Highlight Navigation on Scroll
+        function highlightNav() {
+            const sections = document.querySelectorAll("section");
+            const navLi = document.querySelectorAll("nav a");
+            let current = "";
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Offset for fixed header
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLi.forEach((li) => {
+                li.classList.remove("active");
+                if (li.getAttribute("href").includes(current)) {
+                    li.classList.add("active");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
