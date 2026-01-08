@@ -92,8 +92,9 @@
             display: flex;
             gap: 20px;
             padding: 0 10px;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+            /* Hide scrollbar */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
         
         nav::-webkit-scrollbar {
@@ -168,6 +169,9 @@
             margin-bottom: 8px;
         }
 
+        /* --- SPECIFIC COMPONENT STYLES --- */
+        
+        /* Contact Cards for Housing */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -198,6 +202,7 @@
             margin-bottom: 5px;
         }
 
+        /* Documentation List */
         .doc-list li {
             background: #fff;
             padding: 10px 15px;
@@ -206,72 +211,387 @@
             border: 1px solid #eee;
         }
 
+        /* Checklist style */
         .checklist li::marker {
             color: var(--primary-orange);
             font-weight: bold;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             section { padding: 25px; }
-            header { justify-content: flex-start; }
+            header { justify-content: flex-start; } /* Allow scrolling on mobile nav */
+        }
+        .footer {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 25px;
+        text-align: center;
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        font-size: 0.9rem;
+        color: var(--text-light);
         }
 
-        .footer {
-            width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 25px;
-            text-align: center;
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius-lg);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
     </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="#intro">Inicio</a>
-        <a href="#documentacion">Documentación</a>
-        <a href="#moradia">Alojamiento</a>
-        <a href="#comunicacion">Comunicación</a>
-        <a href="#bancos">Bancos</a>
-        <a href="#transporte">Transporte</a>
-        <a href="#seguranca">Seguridad</a>
-        <a href="#saude">Salud</a>
-        <a href="#universidade">Universidad</a>
-        <a href="#lazer">Ocio</a>
-    </nav>
-</header>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
 
-<main>
-<section id="intro">
-    <h1>Cómo sobrevivir en Belo Horizonte</h1>
-    <p>¡Hola! ¡Felicitaciones por haber pasado por toda la burocracia para llegar hasta aquí! Estamos muy felices de recibirte en nuestro campus. Mi nombre es Henrique y soy tu padrino (es decir: voy a orientarte y ayudarte a dar los primeros pasos para que realmente te guste estar aquí).</p>
-    <p>Separé algunas cosas importantes para contarte; intenta guardar esto en tu celular para consultarlo cuando lo necesites.</p>
-    <p>Expliqué todo de forma simple. Si quieres saber más sobre algún tema específico, solo avísame y lo vemos :)</p>
-</section>
+    <header>
+        <nav>
+            <a href="#intro">Inicio</a>
+            <a href="#documentacao">Documentación</a>
+            <a href="#moradia">Alojamiento</a>
+            <a href="#comunicacao">Comunicación</a>
+            <a href="#bancos">Bancos</a>
+            <a href="#transporte">Transporte</a>
+            <a href="#seguranca">Seguridad</a>
+            <a href="#saude">Salud</a>
+            <a href="#universidade">Universidad</a>
+            <a href="#lazer">Ocio</a>
+        </nav>
+    </header>
 
-<section id="documentacion">
-    <h2>Documentación</h2>
-    <p>Ya recibiste (o recibirás) una lista enorme de documentos y un paso a paso para tramitarlos. Nuestro país es famoso por la burocracia, y vamos a ayudarte en este lío. Lo más importante ahora es el CPF. Guarda bien ese nombre: lo vas a escuchar en supermercados, apps, farmacias, en la universidad y hasta en el médico. CPF = Cadastro de Pessoas Físicas: es un número individual que identifica a una persona en los sistemas.</p>
-    <p>A diferencia del Social Security de EE. UU., el CPF aquí se usa muchísimo para estandarizar registros en empresas, hospitales y universidades.</p>
-</section>
-</main>
+    <main>
+        <section id="intro">
+            <h1>Cómo sobrevivir en Belo Horizonte</h1>
+            <p>¡Hola! ¡Felicitaciones por haber superado toda la burocracia para llegar hasta aquí! Estamos muy felices de recibirte en nuestro campus. Mi nombre es Henrique y soy tu "padrinho" (o sea: voy a orientarte y ayudarte a dar los primeros pasos para que realmente disfrutes tu tiempo aquí).</p>
+            <p>He seleccionado algunas cosas importantes para pasarte; trata de guardar esto en tu celular para consultarlo cuando lo necesites.</p>
+            <p>Abordé todo de forma sencilla. Si quieres saber más sobre algún tema específico, solo llámame o escríbeme y conversamos :) </p>
+        </section>
 
-<footer class="footer">
-    <p>
-        <a href="https://www.instagram.com/limag_henrique/" target="_blank">Mi Instagram</a> ·
-        <a href="https://wa.me/5531994217926" target="_blank">Mi WhatsApp</a> ·
-        <a href="https://www.linkedin.com/in/henriquelimagusmao/" target="_blank">Mi LinkedIn</a>
-    </p>
-    <p>Cualquier duda, estoy a tu disposición ;)</p>
-</footer>
+        <section id="documentacao">
+            <h2>Documentación</h2>
+            <p>Ya recibiste (o recibirás) una lista gigante de documentos y un paso a paso para obtenerlos. Nuestro país es famoso por la burocracia, pero vamos a ayudarte en este lío. Lo más importante ahora es el <strong>CPF</strong>. Grábate bien este nombre: lo vas a escuchar en supermercados, aplicaciones, farmacias, en la facultad y hasta en el médico. CPF = <em>Cadastro de Pessoas Físicas</em>: es un número individual usado para identificar a una persona en los sistemas.</p>
+            <p>A diferencia del número de Seguro Social de EE.UU., el CPF aquí se usa mucho para estandarizar registros en empresas, hospitales y universidades. Puedes solicitar el CPF:</p>
+            <ul>
+                <li>Antes de venir a Brasil: en el consulado brasileño de tu país (recomendado para agilizar). Mira: <a href="https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior" target="_blank">https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior</a>. Consejo: envía los documentos por e-mail; generalmente responden en 1–2 semanas.</li>
+                <li>Después de llegar: en oficinas de la Receita Federal en Belo Horizonte.</li>
+            </ul>
+            <p>Además del CPF, necesitas el <strong>Registro Nacional Migratorio (CRNM)</strong>. Tienes 30 días para registrar tu situación migratoria ante la Policía Federal. Para matricularte en la UFMG debes presentar este documento.</p>
+            <p>El CRNM funciona como una Tarjeta de Identidad: no es necesario andar con el pasaporte todo el tiempo (lleva solo una copia impresa para emergencias) — lleva el CRNM contigo.</p>
+            
+            <h3>Paso a paso para obtener el CRNM</h3>
+            <p>El día agendado, lleva:</p>
+            <ol class="doc-list">
+                <li>Formulario completado <a href="https://servicos.dpf.gov.br/sismigra-internet/faces/publico/tipoSolicitacao/permanenciaRegistroEmissaoCie.seam?cid=12052" target="_blank">Enlace del formulario</a></li>
+                <li>Dos fotos 3×4, recientes, a color y con fondo blanco.</li>
+                <li>Declaración de dirección electrónica y otros medios de contacto <a href="https://www.gov.br/pf/pt-br/assuntos/imigracao/declaracoes-e-formularios/declaracao-eletronica-e-demais-meios-de-contato.pdf" target="_blank">Enlace de la declaración</a></li>
+                <li>Copia del comprobante de residencia (factura de luz, alquiler, internet, etc.) a tu nombre, si tienes.</li>
+                <li>Documento de identificación oficial (pasaporte, documento del país de origen con foto).</li>
+                <li>Formulario original de solicitud de visa (Visa Application Form).</li>
+                <li>Carta de aceptación de la UFMG.</li>
+                <li>Comprobante de pago de la tasa de emisión del CRNM (GRU). Código de receta: 140120. Valor de referencia: R$ 204,77 (verifícalo al momento de la emisión).</li>
+            </ol>
+            <p>Después de tener estos documentos, no hay necesidad de andar con el pasaporte, lleva solo una copia y anda siempre con tu CRNM.</p>
+        </section>
 
+        <section id="moradia">
+            <h2>Alojamiento (Moradia)</h2>
+            <p>La UFMG ofrece residencias universitarias para un número pequeño de estudiantes de intercambio. Por ser una universidad pública, el alojamiento no exige alquiler, pero es <strong>extremadamente difícil de conseguir.</strong></p>
+            <p>Otras opciones más plausibles son alquilar una habitación en una "República" (casa de estudiantes) o un apartamento:</p>
+            <ul>
+                <li><a href="https://hyhaus.com.br" target="_blank">https://hyhaus.com.br</a> — R$ 1.890/mes</li>
+                <li>Busca ofertas de habitaciones en este portal: <a href="https://republicasfederais.jimdofree.com/ufmg/" target="_blank">https://republicasfederais.jimdofree.com/ufmg/</a></li>
+                <li>República Gargano — (31) 99278-9145</li>
+                <li>Coliving — <a href="https://www.instagram.com/colivingbh/" target="_blank">https://www.instagram.com/colivingbh/</a></li>
+            </ul>
+
+            <h3>ALOJAMIENTOS (MIXTOS)</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Danielle Xavier</h4>
+                    <ul>
+                        <li>Dirección: Rua Artur Itabirano, São José</li>
+                        <li>Teléfono: +55 (31) 98408-4200 / +55 (31) 2520-2530</li>
+                        <li>Email: daniellexavier.studio@hotmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Eulina Magalhães</h4>
+                    <ul>
+                        <li>Dirección: Rua Sebastião Antônio Carlos, Bairro Bandeirantes</li>
+                        <li>Teléfono: +55 (31) 98204-4776</li>
+                        <li>Email: linamaga.caetano@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Isabel Meirelles</h4>
+                    <ul>
+                        <li>Dirección: Rua Coronel Marcelino, Santa Rosa</li>
+                        <li>Teléfono: +55 (31) 98405-1589</li>
+                        <li>Email: belmeirelles@yahoo.com.br</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Júnia Viana</h4>
+                    <ul>
+                        <li>Dirección: Rua Ceará, Funcionários</li>
+                        <li>Teléfono: +55 (31) 99797-9727</li>
+                        <li>Email: junia.cvjviana@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Maria Teresa Gomes</h4>
+                    <ul>
+                        <li>Dirección: Alameda das Falcatas, Bairro São Luiz</li>
+                        <li>Teléfono: +55 (31) 99282-7999</li>
+                        <li>Email: mteresa.sol@hotmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Nilce Soares / Sebastião Soares</h4>
+                    <ul>
+                        <li>Dirección: Rua Francisco Proença, Bairro Jaraguá</li>
+                        <li>Teléfono: +55 (31) 98645-1096</li>
+                        <li>Emails: nilcemss@yahoo.com.br / soaressebastiao@yahoo.com.br</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Lourdes Consolazio</h4>
+                    <ul>
+                        <li>Dirección: Alameda das Falcatas, São Luiz</li>
+                        <li>Teléfono: +55 (31) 3441-0450</li>
+                        <li>Email: lourdesconsolazio@yahoo.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>ALOJAMIENTOS SOLO MASCULINOS</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Silvio Leonardo</h4>
+                    <ul>
+                        <li>Dirección: Rua Batista Santiago, Liberdade</li>
+                        <li>Teléfono: +55 (31) 99373-1201</li>
+                        <li>Email: silviodcc@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Freddy Mpanano</h4>
+                    <ul>
+                        <li>Dirección: Rua Mascarenhas, São Luiz</li>
+                        <li>Teléfono: +55 (31) 98645-3003</li>
+                        <li>Email: fmpanano2@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>ALOJAMIENTOS SOLO FEMENINOS</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Vanessa Tamietti</h4>
+                    <ul>
+                        <li>Dirección: Rua Abre Campo, Santo Antônio</li>
+                        <li>Teléfono: +55 (31) 99737-4111</li>
+                        <li>Email: v.tamietti@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Renata Álvares</h4>
+                    <ul>
+                        <li>Dirección: Avenida Pinheiros, Aparecida</li>
+                        <li>Teléfono: +55 (31) 99856-4663</li>
+                        <li>Email: alvares.renata1989@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Otras opciones viables:</h3>
+            <ul>
+                <li>Reservar un hostel o Airbnb a través de Booking o HostelWorld — consejo: busca por el nombre del alojamiento e intenta negociar descuento directamente por teléfono.</li>
+                <li>Alquilar un apartamento ya amueblado en el sitio web Quinto Andar.</li>
+                <li>Intenta estar cerca de la UFMG (Barrio Pampulha para la mayoría de los cursos; atención: las áreas de Salud y Derecho quedan en el Centro) o cerca de líneas de BRT/autobús que lleven a la universidad.</li>
+            </ul>
+        </section>
+
+        <section id="comunicacao">
+            <h2>Comunicación</h2>
+            <p>La mayoría de las personas en BH habla solo portugués. Si tienes dificultades con el idioma, pide que hablen más despacio, repite en inglés despacio, usa gestos; la gente suele ayudar.</p>
+            <p>¡Y no te preocupes! No somos franceses, y no sentimos vergüenza ni rabia por no hablar portugués. Cuando eso sucede es porque la persona no domina el idioma, pero en la gran mayoría de los casos, la gente será muy solícita en ayudarte de la mejor manera posible, incluso si es en un inglés, español o francés básico.</p>
+            
+            <h3>Tarjeta SIM (Chip)</h3>
+            <p>En cuanto tengas tu CPF, ve a un quiosco, farmacia/Drugstore o supermercado y compra un chip (tarjeta SIM). Las operadoras dominantes son tres; yo recomiendo <strong>Claro</strong> por costo/velocidad. Con R$ 35,00 mensuales ya quedas conectado con llamadas nacionales ilimitadas y 12GB de internet.</p>
+            <p>Si tu celular no tiene ranura para SIM (solo eSIM), contáctame en uno de los canales abajo y lo resolvemos.</p>
+            <p>Descarga <a href="https://www.whatsapp.com/download">WhatsApp</a> (si aún no lo tienes) — es el principal canal de comunicación aquí, junto con Instagram. En Instagram, sigue a: ufmgdr, ufmg, la Escuela de tu carrera, spotted_ufmg (chismes y avisos).</p>
+        </section>
+
+        <section id="bancos">
+            <h2>Bancos</h2>
+            <p>¡Con CPF y celular es hora de abrir tu cuenta en el banco!</p>
+            <ul>
+                <li><strong>PIX:</strong> sistema de pagos instantáneos usado por todo el mundo (sin tasas para personas físicas) — es como un Venmo/Zelle del gobierno.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=br.com.intermedium&hl=pt_BR"><strong>Banco Inter:</strong></a> uno de los bancos digitales más usados; permite recibir transferencias nacionales e internacionales SWIFT/ACH sin tasa, cambio fácil, inversiones y tarjeta de débito en BRL y USD.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.revolut.revolut&hl=pt_BR"><strong>Revolut, Wise, Nubank:</strong></a> otras opciones de banco con tarjeta de débito, cambio fácil y apertura online.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=br.com.bb.android&hl=pt_BR"><strong>Banco do Brasil:</strong></a> Abre una cuenta UNIVERSITARIA. Los extranjeros consiguen aplicar para tener una tarjeta de crédito más fácilmente. Es el más adecuado para pagar tasas, multas y la mensualidad del club de la UFMG.</li>
+            </ul>
+            <p>Todas las opciones anteriores tienen cuentas sin costos básicos, pero cuidado con el crédito, ya que puede generar deuda rápido.</p>
+            <p>¿Dinero físico (efectivo)? Casi nadie usa, pero vale la pena tener algunos billetes para emergencias.</p>
+            <p>Aquí la cultura de la propina no es común: el 10% de servicio ya suele venir incluido en la cuenta. Si no te gustó el servicio, pide que retiren el 10%.</p>
+            <p>Al pagar con tarjeta, te preguntarán si quieres procesar la transacción en "débito" o "crédito". Si tienes dinero en la cuenta, elige débito; si usas la función crédito en el Banco do Brasil, paga la factura al día para evitar problemas.</p>
+            <p>Con el PIX haces pagos instantáneos por código QR o enlace — genial para dividir cuentas con amigos.</p>
+        </section>
+
+        <section id="transporte">
+            <h2>Transporte</h2>
+            <ul>
+                <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps&hl=pt_BR">Google Maps</a> funciona muy bien para rutas de autobuses en BH; basta simular la ruta y hacer clic en el ícono de transporte público.</li>
+                <li><strong>Autobuses municipales (azules):</strong> cuesta R$ 6,25. Puedes pagar en efectivo o con tarjeta BHBus (tarjeta recargable en estaciones y en la app <a href="https://play.google.com/store/apps/details?id=br.com.transfacil&hl=pt_BR">BHBus+</a>).</li>
+                <li><strong>BRT (autobuses verde-amarillos):</strong> usan las plataformas MUNICIPALES en medio de la avenida, son más rápidos y tienen el mismo precio que los municipales. ¡Atención! Hay autobuses directos y "paradores" (marcados con P); estos últimos paran en todas las estaciones.</li>
+                <li><strong>Autobuses intermunicipales (rojos, naranjas, morados):</strong> aceptan solo efectivo o tarjeta Ótimo, útil si vas a otras ciudades cercanas.</li>
+                <li><strong>Metro:</strong> nuestro "metro" funciona como un tren de superficie. Pago con tarjeta (crédito/débito), BHBus, Ótimo o efectivo. Tiene una línea (direcciones Novo Eldorado — Contagem; Vilarinho — Venda Nova).</li>
+                <li><strong>Estaciones de bicicletas eléctricas compartidas:</strong> por cerca de R$ 35,00/mes tienes derecho a 4 viajes de 30 minutos cada uno (<a href="https://play.google.com/store/apps/details?id=pbsc.cyclefinder.tembicinosponsor&hl=pt_BR">app TemBici</a>) por día — pago con tarjeta de crédito. Interesante si andas mucho por el Centro o por la Laguna de Pampulha.</li>
+                <li><strong>Apps de transporte:</strong> usa Uber y <a href="https://99app.com/passageiro/baixe-o-app-da-99/">99</a>. Activa la autenticación por código PIN en el viaje para seguridad. Prefiere pagar con tarjeta o PIX, evita el efectivo.</li>
+                <li><strong>Delivery:</strong> las apps más usadas son <a href="https://play.google.com/store/apps/details?id=br.com.brainweb.ifood&hl=pt_BR">Ifood</a> y 99Food.</li>
+            </ul>
+        </section>
+
+        <section id="seguranca">
+            <h2>Seguridad</h2>
+            <p>Elegiste bien: BH es relativamente tranquila y es un polo universitario, gastronómico y cultural. Aun así, por ser una región grande, los problemas urbanos ocurren.</p>
+            <ul>
+                <li>Crimen más común: carteristas (hurtos sin violencia). Los asaltos violentos son menos frecuentes, pero existen.</li>
+                <li>Consejos: anda acompañado, durante el día en lugares con movimiento; guarda el celular y documentos en riñoneras, bolsillos internos o mochilas bien cerradas.</li>
+                <li>Al usar el celular en la calle, entra en alguna tienda si necesitas hacer un pago, llamar a alguien o verificar el GPS.</li>
+            </ul>
+            <p>Barrios más seguros: Zona Sur (Savassi, Lourdes, Mangabeiras), Buritis, Pampulha, UFMG y Belvedere. Barrios para redoblar la atención: Centro, Cachoeirinha y Venda Nova.</p>
+            <p>Parques, museos, centros comerciales y tiendas en general suelen ser seguros — lo importante es no dar oportunidad.</p>
+        </section>
+
+        <section id="saude">
+            <h2>Salud</h2>
+            <p>¿Te dio gripe? ¿Dengue? ¿Fiebre amarilla? ¿Quieres condones? Buena noticia: Brasil tiene salud pública gratuita para cualquiera que esté en el país.</p>
+            <p>El SUS (Sistema Único de Salud) funciona en dos niveles:</p>
+            <p><strong>UBS (Unidad Básica de Salud):</strong> para consultas generales, gripe, vacunas, preservativos, etc. Lleva CRNM, CPF y comprobante de residencia. Cada dirección tiene una UBS de referencia — pásame tu calle y yo verifico la más cercana y los horarios de atención.</p>
+            <p><strong>UPA (Unidad de Pronto Atendimiento):</strong> para urgencias, cuando la cosa está realmente grave. En Minas solemos decir "o trem tá feio" (la cosa está fea/el tren está feo) — una jerga local; acostúmbrate, pues aquí todo puede ser un "trem" (tren/cosa/vaina). La UBS puede derivarte a la UPA, o puedes ir por tu cuenta si lo crees necesario.</p>
+            <p>Además del SUS, probablemente tienes un seguro de salud privado con cobertura nacional. Verifica la carencia y cobertura (dónde puedes ser atendido), y conoce las unidades más cercanas a ti.</p>
+            <p>Consejo: aprovecha que las vacunas se ofrecen en las UBS y ponte las que aún no tengas.</p>
+        </section>
+
+        <section id="universidade">
+            <h2>Universidad</h2>
+            <p>Para involucrarte más en la facultad y resolver dudas, entra en los grupos no oficiales de la UFMG en WhatsApp: <a href="https://wa.me/5531991579687?text=Oi%20Lucas,%20qual%20o%20Link%20dos%20grupos?" target="_blank">Enlace WhatsApp</a></p>
+            <ul>
+                <li>Asistencia mínima: 75%. Las notas finales deben ser mayores a 60 puntos en tu boletín para aprobar. Por lo tanto, asiste a las clases y firma las listas de presencia.</li>
+                <li>Almuerza (11h~14h) y cena (17h~19h) en los comedores universitarios ("Bandejão") por menos de R$ 6,00; paga con tarjeta de débito o efectivo.</li>
+            </ul>
+            <p>Más información en la guía oficial de la UFMG (portugués e inglés): <a href="https://www.ufmg.br/dri/guia-do-estudante-internacional/" target="_blank">Guía de la UFMG</a></p>
+        </section>
+
+        <section id="lazer">
+            <h2>Ocio (Lazer)</h2>
+            <p>Para aprovechar BH al máximo:</p>
+            
+            <h3>Restaurantes típicos y lugares para visitar</h3>
+            <ul class="checklist">
+                <li>Xapuri ($$$)</li>
+                <li>Restaurantes del <a href="https://maps.app.goo.gl/pYym1owhSS6JyyXaA">Edifício Maleta</a> ($$)</li>
+                <li>Aperitivos del <a href="https://maps.app.goo.gl/ZpDAZe2uHyTJcAy57">Mercado Central</a> ($)</li>
+            </ul>
+
+            <h3>Checklist de qué probar:</h3>
+            <ul class="checklist">
+                <li>Pão de queijo (Pan de queso) hecho con queso mineiro de verdad</li>
+                <li>Caldo de cana (Jugo de caña)</li>
+                <li>Pastel paulista (empanada frita de 30 cm)</li>
+                <li>Hotdog con maíz, puré de papa, papas paja, aceituna y "salsa verde dudosa"</li>
+                <li>Sándwich de tráiler "podrão" (hamburguesa callejera grasosa)</li>
+                <li>Hígado con jiló (berenjena escarlata)</li>
+                <li>Caipirinha</li>
+                <li>Limonada del Mercado Central</li>
+                <li>Tragos del Mercado Novo y Mascate (edad > 18)</li>
+                <li>Jugo de maracuyá, guanábana (graviola) y acerola</li>
+                <li>Açaí PURO DE LA AMAZONIA con granola y banana (Tiene que ser el puro)</li>
+            </ul>
+
+            <h3>Vida nocturna (ve con más personas)</h3>
+            <ul>
+                <li>Discotecas y locales nocturnos en Savassi (entrada > 18 años)</li>
+                <li>Bares y locales en la Rua Sapucaí</li>
+            </ul>
+
+            <h3>Vida diurna (región central y Savassi — muchos lugares gratuitos)</h3>
+            <ul>
+                <li>Parque Municipal</li>
+                <li>Palácio das Artes</li>
+                <li>Praça da Liberdade y sus museos (CCBB, Casa Fiat, Centro Cultural Unimed, Museo Mineiro, Palacio de la Libertad, Museo de Minas y Metales, Centro de Arte Popular, Museo de Artes y Oficios)</li>
+                <li>Cines culturales (Cine Humberto Mauro, Cine Una — Belas Artes)</li>
+                <li>Planetario (Espacio Cultural de la UFMG)</li>
+                <li>Visitar la arquitectura de las iglesias católicas</li>
+                <li>Ir a un concierto de rock/sertanejo/emo</li>
+            </ul>
+
+            <h3>Fuera de la región central</h3>
+            <ul>
+                <li>Parque das Mangabeiras — uno de los mayores parques urbanos, con senderos, arroyos y miradores</li>
+                <li>Parque de la Serra do Curral - con la vista más alta de BH</li>
+                <li>Andar en bicicleta en la Laguna de Pampulha</li>
+                <li>Parque Guanabara (Parque de diversiones)</li>
+                <li>Museo Inhotim (planeamos ir con la DRI - Relaciones Internacionales)</li>
+                <li>Visita a Ouro Preto (planeamos ir con la DRI)</li>
+                <li>Gruta da Lapinha, en Lagoa Santa</li>
+                <li>Club de la UFMG (CEU), debes pagar R$25,00 con el Banco do Brasil para poder entrar todos los días del semestre</li>
+                <li>Bibliotecas públicas (Praça da Liberdade y UFMG)</li>
+                <li>Teatros en el CCBB, Palácio das Artes y Sesc Palladium</li>
+                <li>Compras en el Oiapoque (mercado popular) y centros comerciales (shoppings)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>
+            <a href="https://www.instagram.com/limag_henrique/" target="_blank">Mi Instagram</a> ·
+            <a href="https://wa.me/5531994217926" target="_blank">Mi WhatsApp</a> ·
+            <a href="https://www.linkedin.com/in/henriquelimagusmao/" target="_blank">Mi LinkedIn</a>
+        </p>
+        <p>Cualquier duda, estoy a tu disposición ;)</p>
+    </footer>
+
+
+
+    <script>
+        // Progress Bar Script
+        window.onscroll = function() {myFunction()};
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            
+            // Optional: Highlight active section in Nav
+            highlightNav();
+        }
+
+        // Highlight Navigation on Scroll
+        function highlightNav() {
+            const sections = document.querySelectorAll("section");
+            const navLi = document.querySelectorAll("nav a");
+            let current = "";
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Offset for fixed header
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLi.forEach((li) => {
+                li.classList.remove("active");
+                if (li.getAttribute("href").includes(current)) {
+                    li.classList.add("active");
+                }
+            });
+        }
+    </script>
 </body>
 </html>
-
