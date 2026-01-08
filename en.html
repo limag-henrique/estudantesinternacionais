@@ -46,115 +46,552 @@
             color: #cc5200;
             text-decoration: underline;
         }
+
+        /* --- PROGRESS BAR --- */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: var(--primary-orange);
+            width: 0%;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            border-bottom-left-radius: var(--border-radius-lg);
+            border-bottom-right-radius: var(--border-radius-lg);
+        }
+
+        nav {
+            width: 90%;
+            max-width: 1200px;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            gap: 20px;
+            padding: 0 10px;
+            /* Hide scrollbar */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        nav a {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--light-orange);
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            width: 90%;
+            max-width: 900px;
+            margin: calc(var(--nav-height) + 40px) auto 40px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-orange);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-orange);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* --- SPECIFIC COMPONENT STYLES --- */
+        
+        /* Contact Cards for Housing */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background-color: var(--light-orange);
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid #ffe0cc;
+        }
+
+        .contact-card h4 {
+            color: var(--primary-orange);
+            margin-bottom: 10px;
+        }
+
+        .contact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .contact-card li {
+            margin-bottom: 5px;
+        }
+
+        /* Documentation List */
+        .doc-list li {
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+        }
+
+        /* Checklist style */
+        .checklist li::marker {
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            section { padding: 25px; }
+            header { justify-content: flex-start; } /* Allow scrolling on mobile nav */
+        }
+        .footer {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 25px;
+        text-align: center;
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius-lg);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        font-size: 0.9rem;
+        color: var(--text-light);
+        }
+
     </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="#intro">Home</a>
-        <a href="#documentacao">Documents</a>
-        <a href="#moradia">Housing</a>
-        <a href="#comunicacao">Communication</a>
-        <a href="#bancos">Banks</a>
-        <a href="#transporte">Transportation</a>
-        <a href="#seguranca">Safety</a>
-        <a href="#saude">Healthcare</a>
-        <a href="#universidade">University</a>
-        <a href="#lazer">Leisure</a>
-    </nav>
-</header>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
 
-<main>
-<section id="intro">
-    <h1>How to survive in Belo Horizonte</h1>
-    <p>Hey! Congrats on getting through all the bureaucracy to make it here! We’re really happy to welcome you to our campus. My name is Henrique and I’m your buddy (meaning: I’ll guide you and help you take your first steps so you actually enjoy being here).</p>
-    <p>I put together some important info for you — try saving this on your phone so you can check it whenever you need.</p>
-    <p>Everything is explained in a simple way. If you want to dive deeper into any topic, just text me and we’ll talk :)</p>
-</section>
+    <header>
+        <nav>
+            <a href="#intro">Start</a>
+            <a href="#documentacao">Documents</a>
+            <a href="#moradia">Housing</a>
+            <a href="#comunicacao">Communication</a>
+            <a href="#bancos">Banking</a>
+            <a href="#transporte">Transport</a>
+            <a href="#seguranca">Safety</a>
+            <a href="#saude">Health</a>
+            <a href="#universidade">University</a>
+            <a href="#lazer">Leisure</a>
+        </nav>
+    </header>
 
-<section id="documentacao">
-    <h2>Documents</h2>
-    <p>You’ve probably already received (or will receive) a huge list of documents and step-by-step instructions. Brazil is famous for bureaucracy — and we’ll help you navigate this mess. The most important thing right now is the CPF. Remember this name — you’ll hear it at supermarkets, apps, pharmacies, university and even at the doctor’s office. CPF = Individual Taxpayer Registry: it’s a personal number used to identify you in systems.</p>
-    <p>Unlike the U.S. Social Security number, the CPF here is widely used to standardize registrations in companies, hospitals and universities. You can apply for a CPF:</p>
-    <ul>
-        <li>Before coming to Brazil: at the Brazilian consulate in your country (recommended to speed things up). See: <a href="https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior" target="_blank">https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior</a>. Tip: send the documents by email — they usually reply within 1–2 weeks.</li>
-        <li>After arriving: at Federal Revenue offices in Belo Horizonte.</li>
-    </ul>
-    <p>Besides the CPF, you’ll need the National Migratory Registration (CRNM). You have up to 30 days to register your migration status with the Federal Police. This document is required for enrollment at UFMG.</p>
-    <p>The CRNM works like an ID card: you don’t need to carry your passport everywhere (just keep a printed copy for emergencies) — carry the CRNM instead.</p>
-</section>
+    <main>
+        <section id="intro">
+            <h1>How to Survive in Belo Horizonte</h1>
+            <p>Hi! Congratulations on getting through all the bureaucracy to get here! We are very happy to welcome you to our campus. My name is Henrique and I'm your "padrinho" (your buddy: I'll guide you and help you take the first steps so you really enjoy your time here).</p>
+            <p>I've selected some important things to pass on to you; try to save this on your phone to check whenever you need it.</p>
+            <p>I've covered everything simply. If you want to know more about any specific topic, just hit me up, and we'll talk :) </p>
+        </section>
 
-<section id="moradia">
-    <h2>Housing</h2>
-    <p>UFMG offers student housing for a small number of exchange students. Since it’s a public university, there’s no rent — but it’s <strong>extremely hard to get.</strong></p>
-    <p>More realistic options are renting a room in a student house or apartment:</p>
-    <ul>
-        <li><a href="https://hyhaus.com.br" target="_blank">https://hyhaus.com.br</a> — R$ 1,890/month</li>
-        <li>Look for room listings here: <a href="https://republicasfederais.jimdofree.com/ufmg/" target="_blank">https://republicasfederais.jimdofree.com/ufmg/</a></li>
-        <li>Gargano Student House — (31) 99278-9145</li>
-        <li>Coliving — <a href="https://www.instagram.com/colivingbh/" target="_blank">https://www.instagram.com/colivingbh/</a></li>
-    </ul>
-</section>
+        <section id="documentacao">
+            <h2>Documentation</h2>
+            <p>You have already received (or will receive) a giant list of documents and a step-by-step guide to get them. Our country is famous for bureaucracy, but we will help you through this mess. The most important thing now is the <strong>CPF</strong>. Memorize this name well—you will hear it in markets, apps, pharmacies, at college, and even at the doctor's. CPF = <em>Cadastro de Pessoas Físicas</em>: it is an individual number used to identify a person in systems.</p>
+            <p>Unlike the US Social Security number, the CPF here is widely used to standardize registrations in companies, hospitals, and universities. You can apply for a CPF:</p>
+            <ul>
+                <li>Before coming to Brazil: at the Brazilian consulate in your country (recommended to speed things up). See: <a href="https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior" target="_blank">https://www.gov.br/pt-br/servicos/inscrever-no-cpf-no-exterior</a>. Tip: send the documents by email; they usually respond within 1–2 weeks.</li>
+                <li>After arriving: at Federal Revenue (Receita Federal) offices in Belo Horizonte.</li>
+            </ul>
+            <p>Besides the CPF, you need the <strong>National Registry of Migration (CRNM)</strong>. You have 30 days to register your migratory status with the Federal Police. To enroll at UFMG, you must present this document.</p>
+            <p>The CRNM works like an ID Card: you don't need to walk around with your passport all the time (just carry a printed copy for emergencies) — carry the CRNM.</p>
+            
+            <h3>Step-by-step to get the CRNM</h3>
+            <p>On the scheduled day, bring:</p>
+            <ol class="doc-list">
+                <li>Filled form <a href="https://servicos.dpf.gov.br/sismigra-internet/faces/publico/tipoSolicitacao/permanenciaRegistroEmissaoCie.seam?cid=12052" target="_blank">Link to form</a></li>
+                <li>Two 3×4 photos, recent, color, with white background.</li>
+                <li>Declaration of electronic address and contact means <a href="https://www.gov.br/pf/pt-br/assuntos/imigracao/declaracoes-e-formularios/declaracao-eletronica-e-demais-meios-de-contato.pdf" target="_blank">Link to declaration</a></li>
+                <li>Copy of proof of residence (electricity bill, rent, internet, etc.) in your name, if you have one.</li>
+                <li>Official identification document (passport, ID from country of origin with photo).</li>
+                <li>Original Visa Application Form.</li>
+                <li>Acceptance letter from UFMG.</li>
+                <li>Proof of payment of the CRNM issuance fee (GRU). Revenue code: 140120. Reference value: R$ 204.77 (check at the time of issuance).</li>
+            </ol>
+            <p>After having these documents, there is no need to walk around with your passport, just take a copy and always carry your CRNM.</p>
+        </section>
 
-<section id="comunicacao">
-    <h2>Communication</h2>
-    <p>Most people in BH speak only Portuguese. If you struggle with the language, ask them to speak slowly, repeat in English slowly, use gestures — people are usually very helpful.</p>
-    <p>And don’t worry! We’re not French 😄 — no one gets offended if you don’t speak Portuguese. Most people will genuinely try to help, even in English, Spanish or French.</p>
+        <section id="moradia">
+            <h2>Housing</h2>
+            <p>UFMG offers university housing for a small number of exchange students. Since it is a public university, housing does not require rent, but it is <strong>extremely difficult to get.</strong></p>
+            <p>Other more plausible options are renting a room in a student house (República) or an apartment:</p>
+            <ul>
+                <li><a href="https://hyhaus.com.br" target="_blank">https://hyhaus.com.br</a> — R$ 1,890/month</li>
+                <li>Search for room offers on this portal: <a href="https://republicasfederais.jimdofree.com/ufmg/" target="_blank">https://republicasfederais.jimdofree.com/ufmg/</a></li>
+                <li>República Gargano — (31) 99278-9145</li>
+                <li>Coliving — <a href="https://www.instagram.com/colivingbh/" target="_blank">https://www.instagram.com/colivingbh/</a></li>
+            </ul>
 
-    <h3>SIM card</h3>
-    <p>As soon as you have your CPF, go to a newsstand, drugstore/pharmacy or supermarket and buy a SIM card. There are three main carriers — I recommend Claro for price/speed. For around R$35/month, you get unlimited national calls and 12GB of data.</p>
-    <p>If your phone doesn’t have a SIM slot, message me and we’ll figure it out.</p>
-    <p>Download <a href="https://www.whatsapp.com/download">WhatsApp</a> (if you don’t have it yet) — it’s the main communication tool here, along with Instagram. On Instagram, follow: ufmgdr, ufmg, your school, spotted_ufmg (gossip + announcements).</p>
-</section>
+            <h3>ACCOMMODATION (MIXED GENDER)</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Danielle Xavier</h4>
+                    <ul>
+                        <li>Address: Rua Artur Itabirano, São José</li>
+                        <li>Phone: +55 (31) 98408-4200 / +55 (31) 2520-2530</li>
+                        <li>Email: daniellexavier.studio@hotmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Eulina Magalhães</h4>
+                    <ul>
+                        <li>Address: Rua Sebastião Antônio Carlos, Bairro Bandeirantes</li>
+                        <li>Phone: +55 (31) 98204-4776</li>
+                        <li>Email: linamaga.caetano@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Isabel Meirelles</h4>
+                    <ul>
+                        <li>Address: Rua Coronel Marcelino, Santa Rosa</li>
+                        <li>Phone: +55 (31) 98405-1589</li>
+                        <li>Email: belmeirelles@yahoo.com.br</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Júnia Viana</h4>
+                    <ul>
+                        <li>Address: Rua Ceará, Funcionários</li>
+                        <li>Phone: +55 (31) 99797-9727</li>
+                        <li>Email: junia.cvjviana@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Maria Teresa Gomes</h4>
+                    <ul>
+                        <li>Address: Alameda das Falcatas, Bairro São Luiz</li>
+                        <li>Phone: +55 (31) 99282-7999</li>
+                        <li>Email: mteresa.sol@hotmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Nilce Soares / Sebastião Soares</h4>
+                    <ul>
+                        <li>Address: Rua Francisco Proença, Bairro Jaraguá</li>
+                        <li>Phone: +55 (31) 98645-1096</li>
+                        <li>Emails: nilcemss@yahoo.com.br / soaressebastiao@yahoo.com.br</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Lourdes Consolazio</h4>
+                    <ul>
+                        <li>Address: Alameda das Falcatas, São Luiz</li>
+                        <li>Phone: +55 (31) 3441-0450</li>
+                        <li>Email: lourdesconsolazio@yahoo.com</li>
+                    </ul>
+                </div>
+            </div>
 
-<section id="bancos">
-    <h2>Banks</h2>
-    <p>With CPF and a phone number, it’s time to open a bank account!</p>
-    <ul>
-        <li><strong>PIX:</strong> instant payment system used by everyone (no fees for individuals) — think of it as the government’s Venmo/PayPal.</li>
-        <li><a href="https://play.google.com/store/apps/details?id=br.com.intermedium&hl=pt_BR"><strong>Banco Inter:</strong></a> very popular; allows national and international transfers (SWIFT/ACH) with no fees, easy currency exchange, investments, and debit cards in BRL and USD.</li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.revolut.revolut&hl=pt_BR"><strong>Revolut, Wise, Nubank:</strong></a> other good digital banks with debit cards and easy FX.</li>
-        <li><a href="https://play.google.com/store/apps/details?id=br.com.bb.android&hl=pt_BR"><strong>Banco do Brasil:</strong></a> Open a STUDENT account. Foreigners have an easier time applying for a credit card. Best option for paying official fees and the UFMG club.</li>
-    </ul>
-</section>
+            <h3>MALE-ONLY ACCOMMODATION</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Silvio Leonardo</h4>
+                    <ul>
+                        <li>Address: Rua Batista Santiago, Liberdade</li>
+                        <li>Phone: +55 (31) 99373-1201</li>
+                        <li>Email: silviodcc@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Freddy Mpanano</h4>
+                    <ul>
+                        <li>Address: Rua Mascarenhas, São Luiz</li>
+                        <li>Phone: +55 (31) 98645-3003</li>
+                        <li>Email: fmpanano2@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
 
-<section id="seguranca">
-    <h2>Safety</h2>
-    <p>You made a good choice: BH is relatively calm and very student-friendly. Still, it’s a big city, so urban issues exist.</p>
-    <ul>
-        <li>Most common crime: pickpocketing.</li>
-        <li>Tip: stay in groups, especially during the day in busy areas; keep your phone and documents in secure pockets or zipped backpacks.</li>
-        <li>If you need to use your phone, step into a store.</li>
-    </ul>
-</section>
+            <h3>FEMALE-ONLY ACCOMMODATION</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>Vanessa Tamietti</h4>
+                    <ul>
+                        <li>Address: Rua Abre Campo, Santo Antônio</li>
+                        <li>Phone: +55 (31) 99737-4111</li>
+                        <li>Email: v.tamietti@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h4>Renata Álvares</h4>
+                    <ul>
+                        <li>Address: Avenida Pinheiros, Aparecida</li>
+                        <li>Phone: +55 (31) 99856-4663</li>
+                        <li>Email: alvares.renata1989@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
 
-<section id="saude">
-    <h2>Healthcare</h2>
-    <p>Got the flu? Dengue? Yellow fever? Need condoms? Good news: Brazil has free public healthcare for anyone in the country.</p>
-    <p><strong>UBS:</strong> general care, vaccines, condoms, flu. Bring CRNM, CPF and proof of address.</p>
-    <p><strong>UPA:</strong> for real emergencies.</p>
-</section>
+            <h3>Other viable options:</h3>
+            <ul>
+                <li>Book a hostel or Airbnb through Booking or HostelWorld — tip: search for the name of the accommodation and try to negotiate a discount directly by phone.</li>
+                <li>Rent an already furnished apartment on the Quinto Andar website.</li>
+                <li>Try to be close to UFMG (Pampulha neighborhood for most courses; attention: Health and Law areas are in the Center) or close to BRT/bus lines that lead to the university.</li>
+            </ul>
+        </section>
 
-<section id="universidade">
-    <h2>University</h2>
-    <p>To get involved and clear doubts, join unofficial UFMG WhatsApp groups: <a href="https://wa.me/5531991579687?text=Oi%20Lucas,%20qual%20o%20Link%20dos%20grupos?" target="_blank">WhatsApp link</a></p>
-</section>
+        <section id="comunicacao">
+            <h2>Communication</h2>
+            <p>Most people in BH speak only Portuguese. If you have trouble with the language, ask them to speak slower, repeat in English slowly, or use gestures; people usually help.</p>
+            <p>And don't worry! We aren't French; we don't feel ashamed or angry about not speaking Portuguese. When that happens, it's just because the person doesn't know the language, but in the vast majority of cases, people will be very helpful in assisting you in the best way possible, even if it's in broken English, Spanish, or French.</p>
+            
+            <h3>SIM card</h3>
+            <p>As soon as you have your CPF, go to a newsstand, pharmacy/drugstore, or market and buy a chip (SIM card). The dominant operators are three; I recommend <strong>Claro</strong> for cost/speed. With R$ 35.00 monthly you get unlimited national calls and 12GB of internet.</p>
+            <p>If your phone doesn't have a SIM slot (eSIM only), contact me on one of the channels below and we'll solve it.</p>
+            <p>Download <a href="https://www.whatsapp.com/download">WhatsApp</a> (if you don't have it yet) — it is the main communication channel here, along with Instagram. On Instagram, follow: ufmgdr, ufmg, your course's School, spotted_ufmg (gossip and notices).</p>
+        </section>
 
-<section id="lazer">
-    <h2>Leisure</h2>
-    <p>To enjoy BH to the fullest:</p>
-</section>
-</main>
+        <section id="bancos">
+            <h2>Banking</h2>
+            <p>With CPF and a cell phone, it's time to open your bank account!</p>
+            <ul>
+                <li><strong>PIX:</strong> instant payment system used by everyone (no fees for individuals) — it's like a government-run Venmo/Zelle.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=br.com.intermedium&hl=pt_BR"><strong>Banco Inter:</strong></a> one of the most used digital banks; allows receiving national and international SWIFT/ACH transfers without fees, easy exchange, investments, and debit card in BRL and USD.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.revolut.revolut&hl=pt_BR"><strong>Revolut, Wise, Nubank:</strong></a> other bank options with debit cards, easy exchange, and online opening.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=br.com.bb.android&hl=pt_BR"><strong>Banco do Brasil:</strong></a> Open a UNIVERSITY account. Foreigners can apply for a credit card more easily here. It is the most suitable for paying fees, fines, and the UFMG club monthly fee.</li>
+            </ul>
+            <p>All options above have accounts without basic costs, but be careful with credit, as it can generate debt quickly.</p>
+            <p>Physical money (cash)? Almost no one uses it, but it's worth having some bills for emergencies.</p>
+            <p>Here the tipping culture is not common: the 10% service fee usually comes included in the bill. If you didn't like the service, ask to remove the 10%.</p>
+            <p>When paying with a card, they will ask if you want "débito" (debit) or "crédito" (credit). If you have money in the account, choose debit; if you use the credit function at Banco do Brasil, pay the bill on time to avoid problems.</p>
+            <p>With PIX you make instant payments via QR Code or link — great for splitting bills with friends.</p>
+        </section>
 
-<footer class="footer">
-    <p>
-        <a href="https://www.instagram.com/limag_henrique/" target="_blank">My Instagram</a> ·
-        <a href="https://wa.me/5531994217926" target="_blank">My WhatsApp</a> ·
-        <a href="https://www.linkedin.com/in/henriquelimagusmao/" target="_blank">My LinkedIn</a>
-    </p>
-    <p>If you have any questions, I’m here for you ;)</p>
-</footer>
+        <section id="transporte">
+            <h2>Transport</h2>
+            <ul>
+                <li><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps&hl=pt_BR">Google Maps</a> works very well for bus routes in BH; just simulate the route and click on the public transport icon.</li>
+                <li><strong>Municipal buses (Blue):</strong> cost R$ 6.25. You can pay in cash or with a BHBus card (rechargeable card at stations and in the <a href="https://play.google.com/store/apps/details?id=br.com.transfacil&hl=pt_BR">BHBus+</a> app).</li>
+                <li><strong>BRT (Green/Yellow buses):</strong> use the MUNICIPAL platforms in the middle of the avenue, are faster, and have the same price as municipal ones. Attention! There are direct buses and "paradores" (marked with P); the latter stop at all stations.</li>
+                <li><strong>Intermunicipal buses (Red, Orange, Purple):</strong> accept only cash or "Ótimo" card, useful if you are going to other cities nearby.</li>
+                <li><strong>Metro:</strong> our "metro" works like a surface train. Payment with card (credit/debit), BHBus, Ótimo, or cash. There is one line (directions Novo Eldorado — Contagem; Vilarinho — Venda Nova).</li>
+                <li><strong>Shared electric bike stations:</strong> for about R$ 35.00/month you are entitled to 4 trips of 30 minutes each per day (<a href="https://play.google.com/store/apps/details?id=pbsc.cyclefinder.tembicinosponsor&hl=pt_BR">TemBici app</a>) — payment via credit card. Interesting if you walk a lot around the Center or Pampulha Lagoon.</li>
+                <li><strong>Transport apps:</strong> use Uber and <a href="https://99app.com/passageiro/baixe-o-app-da-99/">99</a>. Activate PIN authentication on the ride for safety. Prefer paying by card or PIX, avoid cash.</li>
+                <li><strong>Delivery:</strong> most used apps are <a href="https://play.google.com/store/apps/details?id=br.com.brainweb.ifood&hl=pt_BR">Ifood</a> and 99Food.</li>
+            </ul>
+        </section>
 
+        <section id="seguranca">
+            <h2>Safety</h2>
+            <p>You chose well: BH is relatively calm and is a university, gastronomic, and cultural hub. Still, being a large region, urban problems happen.</p>
+            <ul>
+                <li>Most common crime: pickpockets. Violent robberies are less frequent, but they exist.</li>
+                <li>Tips: walk accompanied, during the day in busy places; keep your cell phone and documents in fanny packs, inside pockets, or tightly closed backpacks.</li>
+                <li>When using your cell phone on the street, step into a store if you need to make a payment, call someone, or check the GPS.</li>
+            </ul>
+            <p>Safest neighborhoods: South Zone (Savassi, Lourdes, Mangabeiras), Buritis, Pampulha, UFMG, and Belvedere. Neighborhoods to redouble attention: Centro (Downtown), Cachoeirinha, and Venda Nova.</p>
+            <p>Parks, museums, malls, and stores in general are usually safe — the important thing is not to give opportunity to thieves.</p>
+        </section>
+
+        <section id="saude">
+            <h2>Health</h2>
+            <p>Got the flu? Dengue? Yellow fever? Need condoms? Good news: Brazil has free public health for anyone in the country.</p>
+            <p>The SUS (Unified Health System) works on two levels:</p>
+            <p><strong>UBS (Basic Health Unit):</strong> for general consultations, flu, vaccines, condoms, etc. Bring CRNM, CPF, and proof of residence. Each address has a reference UBS — send me your street name and I'll check the nearest one and opening hours for you.</p>
+            <p><strong>UPA (Emergency Care Unit):</strong> when things are really serious. In Minas, we usually say "o trem tá feio" (the train is ugly) — a local slang; get used to it, because here, everything can be a "trem" (train/thing). The UBS can refer you to the UPA, or you can go on your own if you think it's necessary.</p>
+            <p>Besides SUS, you likely have private health insurance with national coverage. Check the grace period and coverage (where you can be attended), and know the units closest to you.</p>
+            <p>Tip: take advantage of the fact that vaccines are offered at UBS and take the ones you haven't had yet.</p>
+        </section>
+
+        <section id="universidade">
+            <h2>University</h2>
+            <p>To get more involved in college and ask questions, join the unofficial UFMG groups on WhatsApp: <a href="https://wa.me/5531991579687?text=Oi%20Lucas,%20qual%20o%20Link%20dos%20grupos?" target="_blank">WhatsApp Link</a></p>
+            <ul>
+                <li>Minimum attendance: 75%. Final grades must be greater than 60 points on your report card for approval. Therefore, attend classes and sign the attendance lists.</li>
+                <li>Have lunch (11am~2pm) and dinner (5pm~7pm) at university restaurants (RU/Bandejão) for less than R$ 6.00; pay with debit card or cash.</li>
+            </ul>
+            <p>More information in the official UFMG guide (Portuguese and English): <a href="https://www.ufmg.br/dri/guia-do-estudante-internacional/" target="_blank">UFMG Guide</a></p>
+        </section>
+
+        <section id="lazer">
+            <h2>Leisure</h2>
+            <p>To enjoy BH to the fullest:</p>
+            
+            <h3>Typical restaurants and places to visit</h3>
+            <ul class="checklist">
+                <li>Xapuri ($$$)</li>
+                <li>Restaurants at <a href="https://maps.app.goo.gl/pYym1owhSS6JyyXaA">Edifício Maleta</a> ($$)</li>
+                <li>Snacks at <a href="https://maps.app.goo.gl/ZpDAZe2uHyTJcAy57">Mercado Central</a> ($)</li>
+            </ul>
+
+            <h3>Checklist of what to taste:</h3>
+            <ul class="checklist">
+                <li>Pão de queijo (Cheese bread) made with real Minas cheese</li>
+                <li>Caldo de cana (Sugarcane juice)</li>
+                <li>Pastel paulista (30 cm deep-fried pastry)</li>
+                <li>Hotdog with corn, mashed potatoes, potato sticks, olives, and "dubious green sauce"</li>
+                <li>"Podrão" trailer sandwich (Greasy street burger)</li>
+                <li>Fígado com jiló (Liver with scarlet eggplant)</li>
+                <li>Caipirinha</li>
+                <li>Lemonade at Mercado Central</li>
+                <li>Drinks at Mercado Novo and Mascate (drinking age > 18)</li>
+                <li>Passion fruit, soursop (graviola), and acerola juice</li>
+                <li>Açaí PURE FROM THE AMAZON with granola and banana (It has to be the pure one)</li>
+            </ul>
+
+            <h3>Nightlife (go with other people)</h3>
+            <ul>
+                <li>Clubs and night spots in Savassi (entry > 18 years)</li>
+                <li>Bars and houses on Rua Sapucaí</li>
+            </ul>
+
+            <h3>Daytime life (Central region and Savassi — many free places)</h3>
+            <ul>
+                <li>Municipal Park (Parque Municipal)</li>
+                <li>Palácio das Artes</li>
+                <li>Praça da Liberdade and its museums (CCBB, Casa Fiat, Unimed Cultural Center, Mineiro Museum, Liberty Palace, Mines and Metal Museum, Folk Art Center, Arts and Crafts Museum)</li>
+                <li>Cultural cinemas (Cine Humberto Mauro, Cine Una — Belas Artes)</li>
+                <li>Planetarium (UFMG Cultural Space)</li>
+                <li>Visit the architecture of Catholic churches</li>
+                <li>Go to a rock/sertanejo/emo concert</li>
+            </ul>
+
+            <h3>Outside the central region</h3>
+            <ul>
+                <li>Parque das Mangabeiras — one of the largest urban parks, with trails, streams, and viewpoints</li>
+                <li>Parque da Serra do Curral - with the highest view of BH</li>
+                <li>Ride a bike at Pampulha Lagoon</li>
+                <li>Guanabara Park (Amusement park)</li>
+                <li>Inhotim Museum (we plan to go with DRI - Int. Relations Dept)</li>
+                <li>Visit Ouro Preto (we plan to go with DRI)</li>
+                <li>Lapinha Cave, in Lagoa Santa</li>
+                <li>UFMG Club (CEU), you must pay R$25.00 with Banco do Brasil to be able to enter every day of the semester</li>
+                <li>Public libraries (Praça da Liberdade and UFMG)</li>
+                <li>Theaters at CCBB, Palácio das Artes, and Sesc Palladium</li>
+                <li>Shopping at Oiapoque (popular market) and malls</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>
+            <a href="https://www.instagram.com/limag_henrique/" target="_blank">My Instagram</a> ·
+            <a href="https://wa.me/5531994217926" target="_blank">My WhatsApp</a> ·
+            <a href="https://www.linkedin.com/in/henriquelimagusmao/" target="_blank">My LinkedIn</a>
+        </p>
+        <p>Any questions, I'm at your disposal ;)</p>
+    </footer>
+
+
+
+    <script>
+        // Progress Bar Script
+        window.onscroll = function() {myFunction()};
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+            
+            // Optional: Highlight active section in Nav
+            highlightNav();
+        }
+
+        // Highlight Navigation on Scroll
+        function highlightNav() {
+            const sections = document.querySelectorAll("section");
+            const navLi = document.querySelectorAll("nav a");
+            let current = "";
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Offset for fixed header
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLi.forEach((li) => {
+                li.classList.remove("active");
+                if (li.getAttribute("href").includes(current)) {
+                    li.classList.add("active");
+                }
+            });
+        }
+    </script>
 </body>
 </html>
