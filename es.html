@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Supervivencia - Belo Horizonte</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary-orange: #ff6600;
+            --light-orange: #fff0e6;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius-lg: 30px;
+            --border-radius-sm: 15px;
+            --nav-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--nav-height) + 20px);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #cc5200;
+            text-decoration: underline;
+        }
+
+        /* --- PROGRESS BAR --- */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: var(--primary-orange);
+            width: 0%;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            border-bottom-left-radius: var(--border-radius-lg);
+            border-bottom-right-radius: var(--border-radius-lg);
+        }
+
+        nav {
+            width: 90%;
+            max-width: 1200px;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            gap: 20px;
+            padding: 0 10px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        nav a {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--light-orange);
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            width: 90%;
+            max-width: 900px;
+            margin: calc(var(--nav-height) + 40px) auto 40px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-orange);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-orange);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background-color: var(--light-orange);
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid #ffe0cc;
+        }
+
+        .contact-card h4 {
+            color: var(--primary-orange);
+            margin-bottom: 10px;
+        }
+
+        .contact-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .contact-card li {
+            margin-bottom: 5px;
+        }
+
+        .doc-list li {
+            background: #fff;
+            padding: 10px 15px;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+        }
+
+        .checklist li::marker {
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            section { padding: 25px; }
+            header { justify-content: flex-start; }
+        }
+
+        .footer {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 25px;
+            text-align: center;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="#intro">Inicio</a>
+        <a href="#documentacion">Documentación</a>
+        <a href="#moradia">Alojamiento</a>
+        <a href="#comunicacion">Comunicación</a>
+        <a href="#bancos">Bancos</a>
+        <a href="#transporte">Transporte</a>
+        <a href="#seguranca">Seguridad</a>
+        <a href="#saude">Salud</a>
+        <a href="#universidade">Universidad</a>
+        <a href="#lazer">Ocio</a>
+    </nav>
+</header>
+
+<main>
+<section id="intro">
+    <h1>Cómo sobrevivir en Belo Horizonte</h1>
+    <p>¡Hola! ¡Felicitaciones por haber pasado por toda la burocracia para llegar hasta aquí! Estamos muy felices de recibirte en nuestro campus. Mi nombre es Henrique y soy tu padrino (es decir: voy a orientarte y ayudarte a dar los primeros pasos para que realmente te guste estar aquí).</p>
+    <p>Separé algunas cosas importantes para contarte; intenta guardar esto en tu celular para consultarlo cuando lo necesites.</p>
+    <p>Expliqué todo de forma simple. Si quieres saber más sobre algún tema específico, solo avísame y lo vemos :)</p>
+</section>
+
+<section id="documentacion">
+    <h2>Documentación</h2>
+    <p>Ya recibiste (o recibirás) una lista enorme de documentos y un paso a paso para tramitarlos. Nuestro país es famoso por la burocracia, y vamos a ayudarte en este lío. Lo más importante ahora es el CPF. Guarda bien ese nombre: lo vas a escuchar en supermercados, apps, farmacias, en la universidad y hasta en el médico. CPF = Cadastro de Pessoas Físicas: es un número individual que identifica a una persona en los sistemas.</p>
+    <p>A diferencia del Social Security de EE. UU., el CPF aquí se usa muchísimo para estandarizar registros en empresas, hospitales y universidades.</p>
+</section>
+</main>
+
+<footer class="footer">
+    <p>
+        <a href="https://www.instagram.com/limag_henrique/" target="_blank">Mi Instagram</a> ·
+        <a href="https://wa.me/5531994217926" target="_blank">Mi WhatsApp</a> ·
+        <a href="https://www.linkedin.com/in/henriquelimagusmao/" target="_blank">Mi LinkedIn</a>
+    </p>
+    <p>Cualquier duda, estoy a tu disposición ;)</p>
+</footer>
+
+</body>
+</html>
 
