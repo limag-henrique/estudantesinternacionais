@@ -1,6 +1,7 @@
 # Guia de Sobrevivência em BH - UFMG (Welcome Guide)
 
 > Este é um guia multilíngue para acolher e orientar novos estudantes internacionais na Universidade Federal de Minas Gerais e em Belo Horizonte.
+> Acesse em: [https://limag-henrique.github.io/estudantesinternacionais/](https://limag-henrique.github.io/estudantesinternacionais/)
 
 ## Sobre o Projeto
 
