@@ -217,11 +217,55 @@
             font-weight: bold;
         }
 
+
+        .lang-switcher {
+            position: fixed;
+            top: 12px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ffe0cc;
+            border-radius: 999px;
+            padding: 6px 10px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            z-index: 1100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            font-size: 0.85rem;
+        }
+
+        .lang-switcher span {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .lang-switcher a {
+            color: var(--text-main);
+            padding: 2px 8px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .lang-switcher a:hover,
+        .lang-switcher a.active {
+            background-color: var(--light-orange);
+            color: var(--primary-orange);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             section { padding: 25px; }
             header { justify-content: flex-start; } /* Allow scrolling on mobile nav */
+            .lang-switcher {
+                top: 75px;
+                right: 12px;
+                font-size: 0.75rem;
+                gap: 4px;
+                padding: 5px 7px;
+            }
+
         }
         .footer {
         width: 90%;
@@ -242,6 +286,15 @@
 
     <div class="progress-container">
         <div class="progress-bar" id="myBar"></div>
+    </div>
+
+
+    <div class="lang-switcher" aria-label="Idioma">
+        <span>Idioma:</span>
+        <a href="pt.html" class="">PT</a>
+        <a href="en.html" class="">EN</a>
+        <a href="es.html" class="active">ES</a>
+        <a href="fr.html" class="">FR</a>
     </div>
 
     <header>
